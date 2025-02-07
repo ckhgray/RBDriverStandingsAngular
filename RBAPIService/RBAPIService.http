@@ -1,0 +1,6 @@
+@RBAPIService_HostAddress = http://localhost:5017
+
+GET {{RBAPIService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
