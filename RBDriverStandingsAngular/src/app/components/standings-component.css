@@ -1,0 +1,130 @@
+body {
+  font-family: futura-pt, Arial, sans-serif;
+  color: #001a30;
+  background-color: #f8f9fa;
+}
+
+h1 {
+  color: #ea1d2d;
+  font-family: futura-pt, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 2rem 0;
+  position: relative;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #a8a9ac;
+  border-top: 5px solid #001a30;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+.filters {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 200px;
+  max-width: 50%;
+}
+
+.filter-group label {
+  color: #001a30;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-options span {
+  background: #f8f9fa;
+  border: 2px solid #a8a9ac;
+  border-radius: 25px;
+  padding: 8px 20px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.filter-options span:hover {
+  background: #001a30;
+  color: white;
+  border-color: #fcd700;
+}
+
+.filter-options span.active {
+  background: #ea1d2d;
+  color: white;
+  border-color: #ea1d2d;
+}
+
+table {
+  width: 100%;
+  font-family: futura-pt, Arial, sans-serif;
+  table-layout: fixed; 
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table-container {
+  width: 100%; 
+  max-width: 90%; 
+  margin: 0 auto; 
+  padding-bottom: 1%;
+}
+
+
+th {
+  background: #001a30;
+  color: white;
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+td {
+  padding: 1rem 1.5rem;
+  border-bottom: 2px solid #f8f9fa;
+}
+
+
+.sort-indicator {
+  color: #fcd700;
+  margin-left: 8px;
+}
+
+th:hover {
+  background-color: #ea1d2d;
+  color: #001a30; 
+  cursor: pointer; 
+}
+
+tr:hover td {
+  background-color: #fcd700
+}
+

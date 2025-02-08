@@ -1,0 +1,60 @@
+<div *ngIf="isLoading" class="spinner-container">
+  <div class="loading-spinner"></div>
+</div>
+
+<div *ngIf="!isLoading">
+  <br>
+  <h1>{{season}} Driver Standings</h1>
+  <div class="table-container">
+  <div class="filters">
+    <div class="filter-group">
+      <label>Team:</label>
+      <div class="filter-options">
+        <span
+          *ngFor="let team of teamOptions"
+          [class.active]="teamFilter.includes(team)"
+          (click)="toggleFilter('team', team)"
+        >
+          {{ team }}
+        </span>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label>Nationality:</label>
+      <div class="filter-options">
+        <span
+          *ngFor="let nationality of nationalityOptions"
+          [class.active]="nationalityFilter.includes(nationality)"
+          (click)="toggleFilter('nationality', nationality)"
+        >
+          {{ nationality }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+   <table>
+     <thead>
+       <tr>
+         <th *ngFor="let column of displayedColumns" 
+             (click)="sortData(column)"
+             class="sort-header">
+           {{ getHeaderName(column) }}
+           <span class="sort-indicator">
+             {{ sortMap[column] === 'asc' ? '↑' : sortMap[column] === 'desc' ? '↓' : '' }}
+           </span>
+         </th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor="let driver of dataSource">
+         <td>{{ driver.first_name }} {{ driver.last_name }}</td>
+         <td>{{ driver.driver_country_code }}</td>
+         <td>{{ driver.season_team_name }}</td>
+         <td>{{ driver.season_points }}</td>
+       </tr>
+     </tbody>
+   </table>
+  </div>
+</div>
