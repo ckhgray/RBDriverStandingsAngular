@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
   ]
 })
 export class StandingsComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'driver_country_code', 'season_team_name', 'season_points'];
+  displayedColumns: string[] = ['position', 'name', 'driver_country_code','season_team_name', 'season_points'];
   public dataSource: Driver[] = [];
   public originalData: Driver[] = [];
   public isLoading: boolean = false;
@@ -27,16 +27,15 @@ export class StandingsComponent implements OnInit {
 
   sortMap: { [key: string]: string | null } = {
     name: null,
-    driver_country_code: null,
-    season_team_name: null,
-    season_points: null
+    position: null,
+    season_team_name: null
   };
 
   constructor(private driverStandingsService: DriverStandingsService) {}
 
   ngOnInit(): void {
     this.getStandingsForSeason();
-    this.sortMap['season_points'] = 'desc';
+    this.sortMap['position'] = 'asc';
   }
 
   getStandingsForSeason() {
@@ -47,6 +46,12 @@ export class StandingsComponent implements OnInit {
         this.dataSource = [...this.originalData];
         this.teamOptions = this.getUniqueValues('season_team_name');
         this.nationalityOptions = this.getUniqueValues('driver_country_code');
+
+        const sortedByPoints = [...drivers].sort((a, b) => b.season_points - a.season_points);
+        sortedByPoints.forEach((driver, index) => {
+          driver.position = index + 1;
+        });
+
         this.applyFilters();
         this.isLoading = false;
       });
@@ -136,8 +141,9 @@ export class StandingsComponent implements OnInit {
 
   getHeaderName(column: string): string {
     const headerMap: { [key: string]: string } = {
-      'name': 'Name',
+      'position': 'Position',
       'driver_country_code': 'Nationality',
+      'name': 'Name',
       'season_team_name': 'Team',
       'season_points': 'Points'
     };

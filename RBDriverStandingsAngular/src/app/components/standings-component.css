@@ -1,7 +1,7 @@
 body {
   font-family: futura-pt, Arial, sans-serif;
   color: #001a30;
-  background-color: #f8f9fa;
+  background-color: #a8a9ac;
 }
 
 h1 {
@@ -79,6 +79,13 @@ h1 {
   border-color: #ea1d2d;
 }
 
+.table-container {
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+  padding-bottom: 1%;
+}
+
 table {
   width: 100%;
   font-family: futura-pt, Arial, sans-serif;
@@ -89,14 +96,6 @@ table {
   border-collapse: separate;
   border-spacing: 0;
 }
-
-.table-container {
-  width: 100%; 
-  max-width: 90%; 
-  margin: 0 auto; 
-  padding-bottom: 1%;
-}
-
 
 th {
   background: #001a30;
@@ -109,22 +108,41 @@ th {
 
 td {
   padding: 1rem 1.5rem;
-  border-bottom: 2px solid #f8f9fa;
+  border-bottom: 2px solid #a8a9ac;
+  text-align: center;
 }
-
 
 .sort-indicator {
   color: #fcd700;
   margin-left: 8px;
 }
 
-th:hover {
+th.sort-header {
+  cursor: pointer;
+}
+
+th.sort-header:hover {
   background-color: #ea1d2d;
-  color: #001a30; 
-  cursor: pointer; 
+  color: #001a30;
+}
+
+th[data-column="season_points"],
+th[data-column="driver_country_code"] {
+  cursor: default !important;
+  background-color: #001a30 !important;
+}
+
+th[data-column="season_points"]:hover,
+th[data-column="driver_country_code"]:hover {
+  background-color: #001a30 !important;
+  color: white !important;
+}
+
+th[data-column="season_points"] .sort-indicator,
+th[data-column="driver_country_code"] .sort-indicator {
+  display: none !important;
 }
 
 tr:hover td {
-  background-color: #fcd700
+  background-color: #fcd700;
 }
-

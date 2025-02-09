@@ -26,8 +26,7 @@
         <span
           *ngFor="let nationality of nationalityOptions"
           [class.active]="nationalityFilter.includes(nationality)"
-          (click)="toggleFilter('nationality', nationality)"
-        >
+          (click)="toggleFilter('nationality', nationality)">
           {{ nationality }}
         </span>
       </div>
@@ -37,18 +36,21 @@
    <table>
      <thead>
        <tr>
-         <th *ngFor="let column of displayedColumns" 
-             (click)="sortData(column)"
-             class="sort-header">
-           {{ getHeaderName(column) }}
-           <span class="sort-indicator">
-             {{ sortMap[column] === 'asc' ? '↑' : sortMap[column] === 'desc' ? '↓' : '' }}
-           </span>
-         </th>
+        <th *ngFor="let column of displayedColumns" 
+        [attr.data-column]="column"
+        (click)="!(column === 'season_points' || column === 'driver_country_code') ? sortData(column) : null"
+        [class.sortable]="!(column === 'season_points' || column === 'driver_country_code')"                  
+        class="sort-header">
+        {{ getHeaderName(column) }}
+        <span class="sort-indicator" *ngIf="!(column === 'season_points' || column === 'driver_country_code')">
+          {{ sortMap[column] === 'asc' ? '↑' : sortMap[column] === 'desc' ? '↓' : '' }}
+        </span>
+       </th>
        </tr>
      </thead>
      <tbody>
        <tr *ngFor="let driver of dataSource">
+         <td>{{ driver.position }}</td>
          <td>{{ driver.first_name }} {{ driver.last_name }}</td>
          <td>{{ driver.driver_country_code }}</td>
          <td>{{ driver.season_team_name }}</td>
