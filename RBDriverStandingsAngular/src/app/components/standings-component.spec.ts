@@ -130,7 +130,7 @@ describe('StandingsComponent', () => {
   it('should reset other sorts when sorting new column', () => {
     component.sortData('name');
     expect(component.sortMap['name']).toBe('asc');
-    expect(component.sortMap['season_points']).toBeNull();
+    expect(component.sortMap['position']).toBeNull();
   });
 
   it('should handle empty data gracefully', () => {
