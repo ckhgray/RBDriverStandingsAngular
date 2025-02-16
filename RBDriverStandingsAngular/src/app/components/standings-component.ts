@@ -52,7 +52,6 @@ export class StandingsComponent implements OnInit {
           driver.position = index + 1;
         });
 
-        this.applyFilters();
         this.isLoading = false;
       });
   }

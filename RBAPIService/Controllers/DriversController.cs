@@ -23,18 +23,9 @@ public class DriversController : ControllerBase
 
         var url = $"https://pitwall.redbullracing.com/api/standings/drivers/{season}";
 
-        Console.WriteLine($"Request URL: {url}");
-        Console.WriteLine("Request Headers:");
-        foreach (var header in client.DefaultRequestHeaders)
-        {
-            Console.WriteLine($"{header.Key}: {string.Join(", ", header.Value)}");
-        }
-
         var response = await client.GetAsync(url);
 
-        Console.WriteLine($"Response Status: {response.StatusCode}");
         var responseContent = await response.Content.ReadAsStringAsync();
-        Console.WriteLine($"Response Content: {responseContent}");
 
         if (!response.IsSuccessStatusCode)
         {
